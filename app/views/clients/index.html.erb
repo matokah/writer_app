@@ -1,0 +1,41 @@
+<div class='col-md-12'>
+<div class="col-md-8 col-md-offset-2">
+<h1 style="color:#666666;">Client Index Page</h1>
+
+<div class="table-responsive">
+
+<table class="table table-striped table-hover">
+
+	<tr class="small">
+		<th> Client Name </th>
+		<th> Posts List </th>
+		<th> Edit </th>
+		<th> Delete </th>
+	</tr>
+
+<% current_user.clients.each do |client| %>
+
+<!-- Code in the loop below MUST match the word within the two long lines after 'do' above -->
+
+	<tr class="small">
+		<td> <%= client.name %> </td>
+		<td>
+			<%= link_to "#{client.name} Posts List", client_path(client), :class => 'btn btn-xs btn-danger'  %> 
+		</td>
+		<td>
+			<%= link_to 'Edit', client_path(client), :class => 'btn btn-xs btn-success'  %>
+		</td>
+		<td>
+			<%= link_to 'Delete', client, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-warning' %>
+		</td>
+			
+		</td>	
+	</tr>
+<% end %>
+<%= link_to "Create New Client", new_client_path, :class => 'btn btn-xs btn-success' %>
+</table>
+
+</div>
+</div>
+
+</div>

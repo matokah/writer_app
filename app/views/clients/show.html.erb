@@ -1,0 +1,12 @@
+<div class="col-md-12">
+
+<div class="col-md-8">
+
+<h1><%=@client.name %></h1>
+
+<p><% @client.posts.each do |post| %>
+<ul><li><%= post.title %> | <%= post.submission_date %></li></ul>
+	</p>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,43 @@
+<div class='col-md-12'>
+<div class="col-md-8 col-md-offset-2">
+<h1 style="color:#666666;">Posts Index Page</h1>
+
+<div class="table-responsive">
+
+<table class="table table-striped table-hover">
+
+	<tr class="small">
+		<th> Client </th>
+		<th> Title </th>
+		<th> Edit </th>
+		<th> Delete </th>
+		<th> Submission Date </th>
+		<th> Period </th>
+	</tr>
+
+<% @posts.each do |post| %>
+
+	<tr class="small">
+		<td> <%= post.client.try(:name) %> </td>
+	
+		<td> <%= post.try(:title) %> </td>
+	
+		<td>
+			<%= link_to "Edit", edit_post_path(post), :class => 'btn btn-xs btn-success' %>
+		</td>
+		<td>
+			<%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-warning' %>	
+		</td>
+		<td> <%= post.submission_date %> </td>	
+		<td> <%= post.period %> </td>	
+	</tr>
+<% end %>
+
+<%= link_to "Create New Post", new_post_path, :class => 'btn btn-xs btn-success' %>
+</table>
+
+</div>
+</div>
+
+</div>
+

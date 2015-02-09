@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to "Index", root_path %></li>
+  <% if current_user %>
+  	<li role="presentation"><%= link_to "Clients", user_clients_path(current_user.id) %></li>
+  	<li role="presentation"><%= link_to "Posts", posts_path %></li>
+  <% end %>
+  <li role="presentation"><%= link_to "Current Best Practices", welcome_bestpractices_path %></li>
+
+
+  <% if current_user %>
+  <li role="presentation"><%= link_to "Log-out", destroy_user_session_path, :method => :delete %></li>
+  <% else %>
+  <li role="presentation"><%= link_to "Sign-up", new_user_registration_path %></li>
+   <li role="presentation"><%= link_to "Login", user_session_path %></li>
+<% end %>
+</ul>
