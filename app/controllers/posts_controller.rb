@@ -17,7 +17,13 @@ class PostsController < ApplicationController
 
 def index
   	if current_user 
+      if current_user.admin == true
+        @posts = Post.order(params[:sort])
+        @post = Post.new
+      else
       @posts = current_user.posts
+      @post = Post.new
+    end
     else
       @posts = Post.all #this should never happen because users should be authenticated 
     end
@@ -46,6 +52,17 @@ def index
     redirect_to posts_path
   end
 
+  def post_period_search
+    @period = params["post"]["period"]
+    result = Post.search(@period)
+    if current_user.admin != true
+      @posts = result.where(user_id: current_user.id) 
+    else
+      @posts = result
+    end
+    render :show_posts
+  end
+
 private
 
 	def post_params
@@ -55,4 +72,8 @@ private
 	def get_post
 		@post = Post.find(params[:id])
 	end
+
+
+
+
 end

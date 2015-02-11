@@ -1,7 +1,7 @@
 module PostsHelper
 	def post_periods
 		[
-			['Dec-2014', 'Jan-2014'],
+			['Dec-2014', 'Dec-2014'],
 			['Jan-2015', 'Jan-2015'],
 			['Feb-2015', 'Feb-2015'],
 			['Mar-2015', 'Mar-2015']

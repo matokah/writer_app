@@ -1,5 +1,6 @@
 <div class='col-md-12'>
 <div class="col-md-8 col-md-offset-2">
+<div class="jumbotron">
 <h1 style="color:#666666;">Posts Index Page</h1>
 
 <div class="table-responsive">
@@ -7,12 +8,13 @@
 <table class="table table-striped table-hover">
 
 	<tr class="small">
-		<th> Client </th>
-		<th> Title </th>
-		<th> Edit </th>
-		<th> Delete </th>
-		<th> Submission Date </th>
-		<th> Period </th>
+		<th> <%= link_to "Client", :sort => "client_id" %></th>
+		<th> <%= link_to "Title", :sort => "title" %></th>
+		<th> <%= link_to "Submission Date", :sort => "submission_date" %></th>
+		<th> <%= link_to "Period", :sort => "period" %></th>
+    <th> <%= link_to "User", :sort => "user_id" %></th>
+    <th> Edit </th>
+    <th> Delete </th>
 	</tr>
 
 <% @posts.each do |post| %>
@@ -21,20 +23,21 @@
 		<td> <%= post.client.try(:name) %> </td>
 	
 		<td> <%= post.try(:title) %> </td>
-	
-		<td>
-			<%= link_to "Edit", edit_post_path(post), :class => 'btn btn-xs btn-success' %>
-		</td>
-		<td>
-			<%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-warning' %>	
-		</td>
 		<td> <%= post.submission_date %> </td>	
 		<td> <%= post.period %> </td>	
-	</tr>
+  <td> <%= post.user.email %></td>
+  <td>
+      <%= link_to "Edit", edit_post_path(post), :class => 'btn btn-xs btn-success' %>
+    </td>
+    <td>
+      <%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-warning' %>  
+    </td>
+  </tr>
 <% end %>
 
 <%= link_to "Create New Post", new_post_path, :class => 'btn btn-xs btn-success' %>
 </table>
+<%= render 'searchform' %>
 
 </div>
 </div>

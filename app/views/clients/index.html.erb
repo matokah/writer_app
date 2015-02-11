@@ -1,5 +1,6 @@
 <div class='col-md-12'>
 <div class="col-md-8 col-md-offset-2">
+<div class="jumbotron">
 <h1 style="color:#666666;">Client Index Page</h1>
 
 <div class="table-responsive">
@@ -23,7 +24,7 @@
 			<%= link_to "#{client.name} Posts List", client_path(client), :class => 'btn btn-xs btn-danger'  %> 
 		</td>
 		<td>
-			<%= link_to 'Edit', client_path(client), :class => 'btn btn-xs btn-success'  %>
+			<%= link_to 'Edit', edit_client_path(client), :class => 'btn btn-xs btn-success'  %>
 		</td>
 		<td>
 			<%= link_to 'Delete', client, method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-warning' %>

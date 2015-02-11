@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'welcome/bestpractices', to: 'welcome#bestpractices'
+  post 'post/post_period_search', to: 'posts#post_period_search', as: 'post_period_search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

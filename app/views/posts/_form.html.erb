@@ -1,11 +1,13 @@
-<div class="col-md-6">
-	
 
-	<div class="well">
+
+	<div class="jumbotron">
 	<%= simple_form_for(@post, html: {:class => 'form-horizontal'} ) do |f| %>
 
+  <% if current_user && current_user.admin != true %>
 	<p><%= f.association :client, collection: just_your_clients(current_user), label: false , prompt: 'Select Client', input_html: {:class => 'form-control'} %></p>
-
+  <% else %>
+  <p><%= f.association :client, label: false , prompt: 'Select Client', input_html: {:class => 'form-control'} %></p>
+  <% end %>
 	<p><%= f.input :title, label: false, input_html: {:class => 'form-control', placeholder: 'Blog Post Title'} %></p>
 
 	<p><%= f.input :submission_date, label: false, input_html: {:class => 'form-control', placeholder: 'Submission Date'} %> </p>

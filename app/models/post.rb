@@ -16,4 +16,14 @@ class Post < ActiveRecord::Base
 	belongs_to :client
 	belongs_to :user
 	validates_presence_of :title, :client_id, :submission_date, :period
+
+
+  def self.search(search)
+    if search
+      self.where("period LIKE ?", "%#{search}%")
+    else
+      self.all
+    end
+  end 
+
 end
